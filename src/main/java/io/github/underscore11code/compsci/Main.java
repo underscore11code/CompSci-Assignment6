@@ -35,6 +35,7 @@ public class Main implements Runnable {
               "n");
       if (!again) break;
     }
+    System.out.println("Thank you for using the dictionary");
   }
 
   private String prompt(final String prompt, final Predicate<String> check) {
