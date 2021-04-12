@@ -5,9 +5,10 @@
 # Replit, seems like native gradle support wouldn't be very difficult. Do so please!
 
 out () {
-  echo "[init] ===================="
-  echo "[init] $1"
-  echo "[init] ===================="
+  clear
+  echo "$1"
+  echo "-------------------"
+  echo ""
 }
 
 out "Pulling Latest Code"
