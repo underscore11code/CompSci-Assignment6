@@ -1,9 +1,6 @@
 package io.github.underscore11code.compsci;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -19,13 +16,25 @@ public class Main implements Runnable {
   @Override
   public void run() {
     while (true) {
-      final String word = this.prompt("Enter a word, or \"done\" if you are done:",
-              String::toUpperCase,
-              s -> !s.equals("") && !words.contains(s));
-      if (word.equalsIgnoreCase("done")) break;
-      words.add(word);
+      while (true) {
+        final String word = this.prompt("Enter a word, or \"done\" if you are done:",
+                String::toUpperCase,
+                s -> !s.equals("") && !words.contains(s));
+        if (word.equalsIgnoreCase("done")) break;
+        words.add(word);
+      }
+      final List<String> ordered = words.stream().sorted().collect(Collectors.toList());
+      System.out.println("You have entered the following words: ");
+      for (final String s : ordered) {
+        System.out.println(s);
+      }
+
+      final Boolean again = this.prompt("Would you like to use the dictionary again? (y/n)",
+              s -> s.equalsIgnoreCase("y"),
+              "y",
+              "n");
+      if (!again) break;
     }
-    System.out.println(words.stream().sorted().collect(Collectors.toList()));
   }
 
   private String prompt(final String prompt, final Predicate<String> check) {
