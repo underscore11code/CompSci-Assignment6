@@ -15,8 +15,6 @@ out "Pulling Latest Code"
 git pull
 chmod +x ./gradlew
 out "Building"
-./gradlew version
-out "Building"
 ./gradlew build
 out "Done. Running."
 ./gradlew --console=plain -q run
